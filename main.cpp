@@ -1,165 +1,45 @@
+#include <sstream>
 #include <windows.h>
-#include "header/Determinant.h"
-#include "header/Utils.h"
-#include "header/MatrixOperations.h"
-#include "header/MatrixInverse.h"
+#include "header/Handler.h"
 
 using namespace std;
 using Matrix = vector<vector<double>>; // I'm a bit lazy
 
-void checkMatrixSizeAndInput(Matrix &matrix, int row, int col)
-{
-    if (row == col)
-    {
-        inputMatrix(matrix, row);
-    }
-    else
-    {
-        inputMatrix(matrix, row, col);
-    }
-}
-void getMatrixDimensions(int &row, int &col)
-{
-    cout << "Matrix Size\n\n";
-    cout << "Rows  : ";
-    cin >> row;
-    cout << "Column: ";
-    cin >> col;
-}
-void handleDeterminant(Matrix &v)
-{
-    system("cls");
-    int size;
-    cout << "Determinant\n\n";
-    cout << "Size of matrix: ";
-    cin >> size;
-    cout << endl;
-    inputMatrix(v, size);
-    cout << endl;
-    printMatrix(v);
-
-    cout << "\nDeterminant: " << solveDeterminant(v, v.size());
-    cout << endl;
-    system("pause");
-}
-void handleTranspose(Matrix &v)
-{
-    system("cls");
-    int row, col;
-    cout << "Transpose\n\n";
-    getMatrixDimensions(row, col);
-    checkMatrixSizeAndInput(v, row, col);
-    printMatrix(v);
-    cout << endl;
-    cout << "\nResult:\n"
-         << endl;
-    auto r = transpose(v);
-    printMatrix(r);
-    cout << endl;
-    system("pause");
-}
-void handleMatrixAddition(Matrix &a, Matrix &b)
-{
-    system("cls");
-    cout << "Matrix Addition\n\n";
-    int row, col;
-    cout << "Matrix 1: " << endl;
-    getMatrixDimensions(row, col);
-    checkMatrixSizeAndInput(a, row, col);
-    cout << "\nMatrix 2: " << endl;
-    checkMatrixSizeAndInput(b, row, col);
-    auto r = addMatrix(a, b);
-    cout << "\nResult:\n"
-         << endl;
-    printMatrix(r);
-    cout << endl;
-    system("pause");
-}
-void handleMatrixMultiplication(Matrix &a, Matrix &b)
-{
-    system("cls");
-    cout << "Matrix Multiplication\n\n";
-    int row1, col1, row2, col2;
-    cout << "Matrix 1: " << endl;
-    getMatrixDimensions(row1, col1);
-    checkMatrixSizeAndInput(a, row1, col1);
-    cout << "\nMatrix 2: " << endl;
-    getMatrixDimensions(row2, col2);
-    checkMatrixSizeAndInput(b, row2, col2);
-    auto r = multiplyMatrix(a, b);
-    cout << "\nResult:\n"
-         << endl;
-    printMatrix(r);
-    cout << endl;
-    system("pause");
-}
-void handleInverse(Matrix &v)
-{
-    system("cls");
-    cout << "Inverse of Matrix\n\n";
-    int size;
-    cout << "Size of matrix: ";
-    cin >> size;
-    cout << endl;
-    inputMatrix(v, size);
-    cout << endl;
-    printMatrix(v);
-    cout << "\n\nInverse:\n"
-         << endl;
-    auto inverse = inverseMatrix(v);
-    printMatrix(inverse);
-    cout << endl;
-    system("pause");
-}
-void handleCofactor(Matrix &v)
-{
-    system("cls");
-    cout << "Cofactor of Matrix\n\n";
-    int size;
-    cout << "Size of matrix: ";
-    cin >> size;
-    cout << endl;
-    inputMatrix(v, size);
-    cout << endl;
-    printMatrix(v);
-    cout << "\n\nCofactor:\n"
-         << endl;
-    auto cofactor = cofactorMatrix(v, v.size());
-    printMatrix(cofactor);
-    cout << endl;
-    system("pause");
-}
-void handleAdjoint(Matrix &v)
-{
-    system("cls");
-    cout << "Adjoint of Matrix\n\n";
-    int size;
-    cout << "Size of matrix: ";
-    cin >> size;
-    cout << endl;
-    inputMatrix(v, size);
-    cout << endl;
-    printMatrix(v);
-    cout << "\n\nAdjoint: " << endl;
-    auto adjoint = adjointMatrix(v);
-    printMatrix(adjoint);
-    cout << endl;
-    system("pause");
-}
-
 int main()
 {
-    vector<vector<double>> matrix1;
-    vector<vector<double>> matrix2;
+    Matrix matrix1;
+    Matrix matrix2;
 
+    string input;
     int choice;
-    while (choice < 8)
+    bool loop = true;
+    while (loop)
     {
         system("cls");
-        cout << "Matrix Operations\n\n";
-        cout << "1. Determinant\n2. Transpose\n3. Matrix Addition\n4. Matrix Multiplication\n5. Inverse\n6. Cofactors\n7. Adjoint\n8. Exit" << endl;
-        cout << "\nEnter choice: ";
-        cin >> choice;
+        setColor(10);
+        cout << "=============================\n";
+        cout << "     MATRIX OPERATIONS\n";
+        cout << "=============================\n\n";
+
+        setColor(7);
+        cout << "   1. Determinant\n";
+        cout << "   2. Transpose\n";
+        cout << "   3. Matrix Addition\n";
+        cout << "   4. Matrix Multiplication\n";
+        cout << "   5. Inverse\n";
+        cout << "   6. Cofactors\n";
+        cout << "   7. Adjoint\n";
+        cout << "   8. Exit\n\n";
+
+        setColor(6);
+        cout << "Enter choice: ";
+        getline(cin, input);
+        stringstream ss(input);
+        if (!(ss >> choice))
+        {
+            cout << "invalid input";
+            continue;
+        }
 
         matrix1.clear();
         matrix2.clear();
@@ -189,6 +69,7 @@ int main()
             break;
         default:
             cout << "Terminated" << endl;
+            loop = false;
             break;
         }
     }

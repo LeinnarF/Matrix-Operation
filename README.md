@@ -24,13 +24,8 @@ g++ main.cpp component/* -o main
 
 ##### Entering the entries:
 
-- enter the number of rows $\implies$ the columns
-
-```cpp
-[1] : 1 3 3 //press space after entering the entries for the first row
-[2] : 3 7 1 //then press enter to proceed to second row
-[3] : 3 9 1
-```
+Entering entries is actually simple just type the dimension and fill the column of each row.
+For the love of God please don't input `string` or `char`
 
 #### Note:
 
