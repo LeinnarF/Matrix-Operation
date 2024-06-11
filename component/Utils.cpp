@@ -7,7 +7,7 @@ void printMatrix(vector<vector<double>> &v)
     {
         for (double entries : row)
         {
-            cout << setw(4) << entries << " ";
+            cout << setw(8) << entries << " ";
         }
         cout << endl;
     }
