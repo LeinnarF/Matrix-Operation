@@ -1,10 +1,11 @@
 #include "../header/MatrixOperations.h"
 
 using namespace std;
+using Matrix = vector<vector<double>>;
 
-vector<vector<double>> multiplyMatrix(vector<vector<double>> &a, vector<vector<double>> &b)
+Matrix multiplyMatrix(Matrix &a, Matrix &b)
 {
-    vector<vector<double>> product(a.size(), vector<double>(b[0].size()));
+    Matrix product(a.size(), vector<double>(b[0].size()));
     for (int i = 0; i < a.size(); i++)
     {
         for (int j = 0; j < b[0].size(); j++)
@@ -17,9 +18,9 @@ vector<vector<double>> multiplyMatrix(vector<vector<double>> &a, vector<vector<d
     }
     return product;
 }
-vector<vector<double>> addMatrix(vector<vector<double>> &a, vector<vector<double>> &b)
+Matrix addMatrix(Matrix &a, Matrix &b)
 {
-    vector<vector<double>> sum(a.size(), vector<double>(a[0].size()));
+    Matrix sum(a.size(), vector<double>(a[0].size()));
     for (int i = 0; i < a.size(); i++)
     {
         for (int j = 0; j < a[0].size(); j++)
@@ -29,9 +30,9 @@ vector<vector<double>> addMatrix(vector<vector<double>> &a, vector<vector<double
     }
     return sum;
 }
-vector<vector<double>> transpose(vector<vector<double>> &v)
+Matrix transpose(Matrix &v)
 {
-    vector<vector<double>> trans(v[0].size(), vector<double>(v.size()));
+    Matrix trans(v[0].size(), vector<double>(v.size()));
     for (int i = 0; i < v.size(); i++)
     {
         for (int j = 0; j < v[0].size(); j++)
@@ -40,4 +41,17 @@ vector<vector<double>> transpose(vector<vector<double>> &v)
         }
     }
     return trans;
+}
+
+Matrix scalarMultiply(Matrix &v, double scalar)
+{
+    Matrix result(v.size(), vector<double>(v[0].size()));
+    for (int i = 0; i < v.size(); i++)
+    {
+        for (int j = 0; j < v[0].size(); j++)
+        {
+            result[i][j] = v[i][j] * scalar;
+        }
+    }
+    return result;
 }

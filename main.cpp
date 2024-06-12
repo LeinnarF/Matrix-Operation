@@ -3,7 +3,7 @@
 #include "header/Handler.h"
 
 using namespace std;
-using Matrix = vector<vector<double>>; // I'm a bit lazy
+using Matrix = vector<vector<double>>;
 
 int main()
 {
@@ -29,7 +29,8 @@ int main()
         cout << "   5. Inverse\n";
         cout << "   6. Cofactors\n";
         cout << "   7. Adjoint\n";
-        cout << "   8. Exit\n\n";
+        cout << "   8. Scalar Multiplication\n";
+        cout << "   0. Exit\n\n";
 
         setColor(6);
         cout << "Enter choice: ";
@@ -66,6 +67,9 @@ int main()
             break;
         case 7:
             handleAdjoint(matrix1);
+            break;
+        case 8:
+            handleScalarMultiplication(matrix1);
             break;
         default:
             cout << "Terminated" << endl;

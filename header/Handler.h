@@ -16,3 +16,4 @@ void handleMatrixMultiplication(Matrix &a, Matrix &b);
 void handleInverse(Matrix &v);
 void handleCofactor(Matrix &v);
 void handleAdjoint(Matrix &v);
+void handleScalarMultiplication(Matrix &v);

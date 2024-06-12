@@ -180,3 +180,26 @@ void handleAdjoint(Matrix &v)
     cout << endl;
     system("pause");
 }
+void handleScalarMultiplication(Matrix &v)
+{
+    system("cls");
+    setColor(10);
+    cout << "Scalar Multiplication\n\n";
+    setColor(7);
+    int row, col;
+    getMatrixDimensions(row, col);
+    checkMatrixSizeAndInput(v, row, col);
+    cout << endl;
+    printMatrix(v);
+    double scalar;
+    cout << "\nEnter scalar: ";
+    cin >> scalar;
+    auto r = scalarMultiply(v, scalar);
+    setColor(10);
+    cout << "\nResult:\n"
+         << endl;
+    setColor(7);
+    printMatrix(r);
+    cout << endl;
+    system("pause");
+}
