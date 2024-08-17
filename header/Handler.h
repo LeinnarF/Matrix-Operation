@@ -3,6 +3,7 @@
 #include "../header/MatrixOperations.h"
 #include "../header/MatrixInverse.h"
 #include "../header/Determinant.h"
+#pragma once
 
 using namespace std;
 using Matrix = vector<vector<double>>; // I'm a bit lazy

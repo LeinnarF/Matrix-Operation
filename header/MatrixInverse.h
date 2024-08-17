@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <cmath>
 #include "../header/Determinant.h"
+#pragma once
 
 using namespace std;
 

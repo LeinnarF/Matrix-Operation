@@ -1,5 +1,5 @@
 #include <vector>
-
+#pragma once
 using namespace std;
 
 vector<vector<double>> multiplyMatrix(vector<vector<double>> &a, vector<vector<double>> &b);
